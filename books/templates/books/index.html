@@ -1,0 +1,25 @@
+{% extends 'books/base.html' %} 
+
+{% block content %} 
+<h3 style=" margin-top: 1%;">Create a new Book <a class="new list-articles" href = "{% url 'create_project' %}">Create</a></h3>
+
+
+<ul class="list-articles">
+    {% for i in posts %}
+    <li>
+    <h2>{{i.title}}</h2>
+    <h5>Publisher of this book: {{i.publisher}}</h5>
+    <h5>Author of this book:{{i.author}}</h5>
+    {% autoescape on %}
+	{{i.content|linebreaks|truncatewords:50}}
+	{% endautoescape %}
+    <p>{{i.publication_date}}</p>
+    <div class="clear"></div>
+    <img width='200' src="{{ i.photo.url }}" alt="">
+	<p class="link-read-post"><a href="{% url 'book' i.pk %}">Read more</a></p>
+    <p class = "link-read-post"><a href = "{% url 'delete_book' i.pk %}">Delete</a></p>
+
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

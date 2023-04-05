@@ -1,0 +1,19 @@
+{% extends 'books/base.html' %} 
+
+{% block content %} 
+<h3 style="margin-top: 1%; margin-bottom: 5%;">Create a new Publisher <a class="new list-articles" href = "{% url 'create_publisher' %}">Create</a></h3>
+<div class="clear"></div>
+
+
+<ul class="list-articles">
+    {% for i in posts %}
+    <li>
+    <h3>Publisher: {{i.name}}</h3>
+    <h4>Email: {{i.address}}</h4>
+    <p class="link-read-post"><a href="{% url 'edit_publisher' i.pk %}">EDIT</a></p>
+    <p class="link-read-post"><a href="{% url 'delete_publisher' i.pk %}">DELETE</a></p>
+
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'books/base.html' %} 
+
+{% block content %}
+<h1>Book: {{ book.title }}</h1>
+<p>Description: {{book.content}}</p>
+<h5>Publisher of this book: {{book.publisher}}</h5>
+<h5>Author of this book:{{book.author}}</h5>
+<p>{{book.publication_date}}</p>
+<img width="500px" src="{{ book.photo.url }}" alt="">
+<p class="link-read-post"><a href="{% url 'edit_project' book.pk %}">EDIT</a></p>
+
+
+{% endblock %}

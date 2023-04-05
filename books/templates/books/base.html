@@ -1,0 +1,42 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link href = "{% static 'books/css/style.css' %}" rel="stylesheet"/>
+    <link rel="shortcut icon" href="{% static 'books/images/book_icon.png' %}" type="image/x-icon">
+</head>
+
+
+<body>
+	{% block mainmenu %}
+	<div class="header">
+		<ul id="mainmenu" class="mainmenu">
+
+		<li><a href="{% url 'books' %}">Books</a></li>
+		<li><a href="{% url 'publishers' %}">Publishers</a></li>
+		<li><a href="{% url 'authors' %}">Authors</a></li>
+		{% if request.user.is_authenticated %} 
+		<li class=" last">{{user.username}} | <a href="{% url 'logout' %}">Logout</a></li>
+		{% else %}
+		<li><a href="{%url 'register' %}">Register</a> | <a href="{% url 'login' %}">Login</a></li>
+		{% endif %}
+		</ul>
+		<div class="clear"></div>
+	</div>
+{% endblock mainmenu %}
+
+{% block breadcrumbs %}
+{% endblock %}
+<div class="clear"></div>
+
+<div class="content-text">
+{% block content %}
+{% endblock %}
+</div>
+
+</body>
+</html>

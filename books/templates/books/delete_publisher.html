@@ -1,0 +1,13 @@
+{% extends 'books/base.html' %}
+
+{% block title %}Delete{% endblock title %} 
+
+{% block content %} 
+<form method="post">
+    {%csrf_token %} 
+    <p>Are sure to delete {{project.name}}</p>
+    <a href="{% url 'authors' %}">NO</a>
+    <input type="submit" value="YES">
+
+</form>
+{% endblock content %}
